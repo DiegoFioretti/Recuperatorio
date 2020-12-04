@@ -1,6 +1,13 @@
+#ifndef JUGADOR_H
+#define JUGADOR_H
 #pragma once
 #include "Common.h"
 
+enum EstadoJugador {
+	noJuega,
+	circulo,
+	cruz = 3
+};
 
 class Jugador
 {
@@ -24,3 +31,4 @@ public:
 	int GetEstado();
 	void SetEstado(const int& nuevoEstado);
 };
+#endif

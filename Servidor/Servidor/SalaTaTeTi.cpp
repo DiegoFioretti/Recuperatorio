@@ -49,8 +49,9 @@ int SalaTaTeTi::MovimientoJugador(const int& id, const char& posicion)
 	// K == 0 = No hubo cambios significativos en la partida, la partida sigue normal y se cambia de turno
 	//	K == JUEGAX (-30) = Le toca a X jugar
 	//	K == JUEGOO (-31) = Le toca a O jugar
-	// K < 0 = Es un empate
+	// K == EMPATE (10) = Es un empate
 	// K == NOJUEGA(-25) = El jugador hizo una jugada que no le corresponde y se le tiene que avisar
+	// K = OCUPADO (-20) = El jugador intento poner su pieza en una casilla ocupada
 
 	if (id == _IDjugadorX && _turnoX == false)
 	{
@@ -257,7 +258,7 @@ int SalaTaTeTi::CheckGanador()
 	// Empate
 	else if (_espacios[0][0] != '1' && _espacios[0][1] != '2' && _espacios[0][2] != '3' && _espacios[1][0] != '4' && _espacios[1][1] != '5' && _espacios[1][2] != '6' && _espacios[2][0] != '7' && _espacios[2][1] != '8' && _espacios[2][2] != '9') {
 		_terminado = true;
-		return -1;
+		return EMPATE;
 	}
 	// No cambio nada
 	return 0;

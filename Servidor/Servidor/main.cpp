@@ -2,6 +2,8 @@
 #include "SalaTaTeTi.h"
 #include "Jugador.h"
 
+#include <vector>
+
 #define BUFLON 512		//Longitud maxima del buffer
 #define PUERTO 8888		//Puerto del que se escucha
 #define NOMLON 17		//Longitud maxima del nombre de usuario
@@ -183,13 +185,17 @@ void ComandosJuego(const std::string& _buf, const int& user) {
 			{
 				EscribirRespuesta(GetSaladeJugador(user)->GetTabla() + "\nJUEGO TERMINADO! El ganador de la partida es " + GetJugador(resultadoInput)->GetNombre() + "\n" + "usen #replay para volver a jugar");
 			}
+			else if (resultadoInput == EMPATE)
+			{
+				EscribirRespuesta(GetSaladeJugador(user)->GetTabla() + "\nJUEGO EMPATADO! No hay mas movimientos. Usen #replay para volver a jugar");
+			}
 			else if (resultadoInput == NOJUEGA)
 			{
 				EscribirRespuesta("No es tu turno de jugar " + GetJugador(user)->GetNombre() + '\n');
 			}
 			else if (resultadoInput == OCUPADO)
 			{
-				EscribirRespuesta("Ese espacio esta ocupado " + GetJugador(user)->GetNombre() + ", intenta otro\n");
+				EscribirRespuesta("Esa casilla esta ocupada " + GetJugador(user)->GetNombre() + ", intenta otro\n");
 			}
 			else if (resultadoInput == JUEGAX && !GetSaladeJugador(user)->PartidaTerminada())
 			{
@@ -235,7 +241,7 @@ int main() {
 	}
 	std::cout << "Listo!" << std::endl;
 
-	// Preparar la estructura del sockaddr_in
+	// Preparar la estructura sockaddr_in del servidor
 	serverDir.sin_family = AF_INET;
 	serverDir.sin_addr.s_addr = INADDR_ANY;
 	serverDir.sin_port = htons(PUERTO);

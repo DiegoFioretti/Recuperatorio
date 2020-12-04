@@ -1,11 +1,13 @@
+#ifndef SALATATETI_H
+#define SALATATETI_H
 #pragma once
 #include "Common.h"
-#include "Jugador.h"
 
 #define NOJUEGA -25
 #define JUEGAX	-30
 #define JUEGAO	-31
 #define OCUPADO -20
+#define EMPATE	-10
 
 class SalaTaTeTi
 {
@@ -43,3 +45,4 @@ public:
 	bool ORejuega() { return _oRejuega; }
 	void SetORejuega(const bool& rejuega) { _oRejuega = rejuega; };
 };
+#endif
